@@ -1,29 +1,51 @@
-<h1>Listado de todos</h1>
-<%= link_to "Añadir todo", new_todo_path %>
+<div class="container-fluid">
 
-<div id="todos-no-completados">
-  <h1>Listado de todos sin completar</h1>
-  <% @todos.each do |todo| %>
-    <% if !todo.completed %>
-        <%= render todo %>
-        <p>
-          <%= link_to "Editar", edit_todo_path(todo) %>
-        </p>
-    <% end %> 
-  <% end %>
+  <h1 class="text-center">Listado de todos</h1>
+  <div class="col text-center">
+    <%= link_to "Añadir todo", new_todo_path, class: "btn btn-info colorWhite" %>
+  </div>
+
+  <div class="accordion" id="accordionSinCompletar">
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="headingOne">
+        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+          Listado de todos sin completar
+        </button>
+      </h2>
+      <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+        <div class="accordion-body">
+          <% @todosNotCompleted.each do |todo| %>
+            <%= render todo %>
+            <p>
+              <%= link_to "Editar", edit_todo_path(todo), class: "btn btn-primary" %>
+            </p>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="accordion" id="accordionCompletados">
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="headingTwo">
+        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+          Listado de todos completados
+        </button>
+      </h2>
+      <div id="collapseTwo" class="accordion-collapse collapse show" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+        <div class="accordion-body">
+          <% @todosCompleted.each do |todo| %>
+            <%= render todo %>
+            <p>
+              <%= link_to "Editar", edit_todo_path(todo), class: "btn btn-primary" %>
+            </p>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+
 </div>
-
-<div id="todos-completados">
-<h1>Listado de todos completados</h1>
-  <% @todos.each do |todo| %>
-    <% if todo.completed %>
-        <%= render todo %>
-        <p>
-          <%= link_to "Editar", edit_todo_path(todo) %>
-        </p>
-    <% end %> 
-  <% end %>
-</div>
-
 
 
