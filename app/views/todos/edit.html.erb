@@ -1,0 +1,10 @@
+<h1>Editar todo</h1>
+
+<%= render "form", todo: @todo %>
+
+<br>
+
+<div>
+  <%= button_to "Eliminar de la lista", @todo, method: :delete %>
+  <%= link_to "Volver atrás", todos_path %>
+</div>

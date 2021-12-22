@@ -1,0 +1,29 @@
+<h1>Listado de todos</h1>
+<%= link_to "Añadir todo", new_todo_path %>
+
+<div id="todos-no-completados">
+  <h1>Listado de todos sin completar</h1>
+  <% @todos.each do |todo| %>
+    <% if !todo.completed %>
+        <%= render todo %>
+        <p>
+          <%= link_to "Editar", edit_todo_path(todo) %>
+        </p>
+    <% end %> 
+  <% end %>
+</div>
+
+<div id="todos-completados">
+<h1>Listado de todos completados</h1>
+  <% @todos.each do |todo| %>
+    <% if todo.completed %>
+        <%= render todo %>
+        <p>
+          <%= link_to "Editar", edit_todo_path(todo) %>
+        </p>
+    <% end %> 
+  <% end %>
+</div>
+
+
+

@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @todo %>
+
+<div>
+  <%= link_to "Editar todo", edit_todo_path(@todo) %> |
+  <%= link_to "Volver atrás", todos_path %>
+
+  <%= button_to "Eliminar de la lista", @todo, method: :delete %>
+</div>
