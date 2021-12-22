@@ -3,7 +3,8 @@ class TodosController < ApplicationController
 
   # GET /todos or /todos.json
   def index
-    @todos = Todo.all
+    @todosCompleted = Todo.select { |todo| todo.completed }
+    @todosNotCompleted = Todo.select { |todo| !todo.completed }
   end
 
   # GET /todos/1 or /todos/1.json

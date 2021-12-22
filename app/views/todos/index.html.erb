@@ -14,13 +14,11 @@
       </h2>
       <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
         <div class="accordion-body">
-          <% @todos.each do |todo| %>
-            <% if !todo.completed %>
-                <%= render todo %>
-                <p>
-                  <%= link_to "Editar", edit_todo_path(todo), class: "btn btn-primary" %>
-                </p>
-            <% end %> 
+          <% @todosNotCompleted.each do |todo| %>
+            <%= render todo %>
+            <p>
+              <%= link_to "Editar", edit_todo_path(todo), class: "btn btn-primary" %>
+            </p>
           <% end %>
         </div>
       </div>
@@ -37,13 +35,11 @@
       </h2>
       <div id="collapseTwo" class="accordion-collapse collapse show" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
         <div class="accordion-body">
-          <% @todos.each do |todo| %>
-            <% if todo.completed %>
-                <%= render todo %>
-                <p>
-                  <%= link_to "Editar", edit_todo_path(todo), class: "btn btn-primary" %>
-                </p>
-            <% end %> 
+          <% @todosCompleted.each do |todo| %>
+            <%= render todo %>
+            <p>
+              <%= link_to "Editar", edit_todo_path(todo), class: "btn btn-primary" %>
+            </p>
           <% end %>
         </div>
       </div>
